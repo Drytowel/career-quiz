@@ -23,17 +23,18 @@
       text-align: center;
     }
     h1 {
-      margin: 0 0 40px;
-      font-size: 2.4rem;
+      margin: 0 0 28px;
+      font-size: clamp(1.4rem, 5vw, 2.4rem);
       font-weight: 700;
       text-align: center;
+      line-height: 1.3;
     }
-    .subtitle { font-size: 1.15rem; opacity: .9; line-height: 2.2; margin-bottom: 48px; text-align: center; }
+    .subtitle { font-size: clamp(0.95rem, 3.5vw, 1.15rem); opacity: .9; line-height: 1.9; margin-bottom: 36px; text-align: center; }
     .scene-title {
-      font-size: 1.6rem;
+      font-size: clamp(1.2rem, 4vw, 1.6rem);
       font-weight: 700;
       text-align: center;
-      margin: 0 0 20px;
+      margin: 0 0 16px;
     }
     .question-img {
       width: 100%;
@@ -41,6 +42,8 @@
       background: #d0d0d0;
       border-radius: 12px;
       margin-bottom: 24px;
+      object-fit: cover;
+      display: block;
     }
     .question-text {
       font-size: 1.1rem;
@@ -75,12 +78,13 @@
     #start-btn {
       background: #fff;
       color: #000;
-      font-size: 1.2rem;
+      font-size: clamp(1rem, 4vw, 1.2rem);
       font-weight: 600;
-      padding: 18px 80px;
+      padding: 18px clamp(32px, 10vw, 80px);
       border-radius: 50px;
       border: none;
       letter-spacing: .05em;
+      width: min(320px, 80vw);
     }
     #start-btn:hover {
       background: #e8e8e8;
@@ -94,11 +98,11 @@
       margin-bottom: 16px;
     }
     .result-role {
-      font-size: 3rem;
+      font-size: clamp(1.8rem, 7vw, 3rem);
       font-weight: 700;
       color: #ffd76a;
       text-shadow: 0 0 24px rgba(255, 215, 0, .6);
-      margin: 0 0 36px;
+      margin: 0 0 28px;
       line-height: 1.2;
     }
     .result-traits {
@@ -159,6 +163,7 @@
     const data = {
       q1: {
         scene: "冒險起點",
+        img: "source/start.png",
         question: "你剛從平行世界轉生，睜開眼睛，眼前的世界是？",
         choices: [
           { text: "翠綠森林，鳥語花香", next: "q2" },
@@ -168,6 +173,7 @@
       },
       q2: {
         scene: "森林探險",
+        img: "source/森林探險.png",
         question: "你走在森林裡，發現一棵會發光的古樹，你會？",
         choices: [
           { text: "研究樹的魔法", next: "q5" },
@@ -295,7 +301,7 @@
       const q = data[id];
       quizEl.innerHTML = `
         <div class="scene-title">${q.scene}</div>
-        <div class="question-img"></div>
+        ${q.img ? `<img class="question-img" src="${q.img}" alt="${q.scene}">` : `<div class="question-img"></div>`}
         <div class="question-text">${q.question}</div>
         <div class="choices">
           ${q.choices.map((c, i) => `<button class="choice-btn" data-index="${i}">${c.text}</button>`).join("")}

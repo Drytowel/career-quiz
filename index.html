@@ -121,9 +121,27 @@
       max-width: 520px;
       margin: 0 auto 40px;
     }
+    .mute-btn {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      color: #fff;
+      font-size: 1.2rem;
+      padding: 8px 12px;
+      border-radius: 50px;
+      cursor: pointer;
+      z-index: 999;
+      backdrop-filter: blur(6px);
+      transition: background .2s;
+    }
+    .mute-btn:hover { background: rgba(255,255,255,.22); }
   </style>
 </head>
 <body>
+  <audio id="bgm" src="source/Hateno_Village.mp3" loop></audio>
+  <button class="mute-btn" id="mute-btn" style="display:none" title="音樂開關">🔊</button>
   <main class="card">
     <h1>RPG冒險：你的人格職業是什麼？</h1>
     <p class="subtitle" id="intro">
@@ -309,11 +327,26 @@
       document.getElementById("restart").addEventListener("click", () => renderStart());
     }
 
+    const bgm = document.getElementById("bgm");
+    const muteBtn = document.getElementById("mute-btn");
+    muteBtn.addEventListener("click", () => {
+      bgm.muted = !bgm.muted;
+      muteBtn.textContent = bgm.muted ? "🔇" : "🔊";
+    });
+
+    function startBgm() {
+      bgm.play();
+      muteBtn.style.display = "";
+    }
+
     function renderStart() {
       introEl.style.display = "";
       document.querySelector("h1").style.display = "";
       quizEl.innerHTML = `<div style="text-align:center"><button id="start-btn">開始冒險</button></div>`;
-      document.getElementById("start-btn").addEventListener("click", () => renderQuestion("q1"));
+      document.getElementById("start-btn").addEventListener("click", () => {
+        startBgm();
+        renderQuestion("q1");
+      });
     }
 
     renderStart();

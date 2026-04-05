@@ -346,6 +346,12 @@
       document.getElementById("intro").style.display = "none";
       document.querySelector("h1").style.display = "none";
       const r = roleData[role] ?? {};
+
+      // 傳送到 Google Sheets
+      fetch("https://script.google.com/macros/s/AKfycbxDF0ORUl_-oeDGZQvzFtBiFwBCff0fGG9zdRhiRag989aGnSkYvkYKlrhSyU_I_VD1/exec", {
+        method: "POST",
+        body: JSON.stringify({ name: window._playerName ?? "", role: role }),
+      }).catch(() => {});  // 靜默失敗，不影響用戶體驗
       quizEl.innerHTML = `
         <div style="text-align:center; padding: 20px 0;">
           <div class="result-done">— 測驗完成 —</div>

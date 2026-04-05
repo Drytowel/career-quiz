@@ -174,39 +174,39 @@
       q2: {
         scene: "森林探險",
         img: "source/森林探險.png",
-        question: "你走在森林裡，發現一棵會發光的古樹，你會？",
+        question: "你在森林中漫步，發現一棵會發光的古樹，你會？",
         choices: [
-          { text: "研究樹的魔法", next: "q5" },
-          { text: "攀上樹探索周圍", next: "q6" },
-          { text: "守護樹，防止受傷", next: "q7" }
+          { text: "仔細研究樹的魔法", next: "q5" },
+          { text: "攀上樹，探索周圍", next: "q6" },
+          { text: "守護樹，防止樹木受傷", next: "q7" }
         ]
       },
       q3: {
         scene: "廢墟迷宮",
         img: "source/廢墟迷宮.png",
-        question: "你走進廢墟，看到寶箱被怪物守護，你會？",
+        question: "廢墟中，你看到一個寶箱被怪物守護，你會？",
         choices: [
           { text: "衝上去戰鬥", next: "q6" },
-          { text: "嘗試解鎖陷阱", next: "q5" },
+          { text: "小心解鎖陷阱", next: "q5" },
           { text: "設置防禦，先確保安全", next: "q7" }
         ]
       },
       q4: {
         scene: "虛空探索",
         img: "source/虛空探索.png",
-        question: "你身處空白虛空，你想做什麼？",
+        question: "虛空中，你感覺到奇怪的能量，你想做什麼？",
         choices: [
-          { text: "建造工具", next: "q8" },
-          { text: "冥想，觀察環境", next: "q7" },
-          { text: "探索未知，找出路", next: "q6" }
+          { text: "建造工具，穩住環境", next: "q8" },
+          { text: "冥想，觀察周圍", next: "q7" },
+          { text: "勇敢探索未知", next: "q6" }
         ]
       },
       q5: {
         scene: "魔法的抉擇",
         img: "source/魔法的抉擇.png",
-        question: "你發現神秘水晶，你會？",
+        question: "發現一顆神秘水晶，你會？",
         choices: [
-          { text: "研究魔法", next: "q9" },
+          { text: "研究魔法，探索神秘力量", next: "q9" },
           { text: "製作小工具或武器", next: "q8" },
           { text: "召喚守護靈", next: "q10" }
         ]
@@ -214,7 +214,7 @@
       q6: {
         scene: "勇氣挑戰",
         img: "source/勇氣挑戰.png",
-        question: "你面對懸崖與危險怪物，你會？",
+        question: "面對懸崖與危險怪物，你會？",
         choices: [
           { text: "衝上去冒險", next: "q9" },
           { text: "慎重探索", next: "q10" },
@@ -222,9 +222,9 @@
         ]
       },
       q7: {
-        scene: "團隊選擇",
-        img: "source/團隊選擇.png",
-        question: "你遇到一群迷路旅人，你會？",
+        scene: "團隊抉擇",
+        img: "source/團隊抉擇.png",
+        question: "遇到一群迷路旅人，你會？",
         choices: [
           { text: "幫助他們安全穿越", next: "q10" },
           { text: "帶領大家冒險", next: "q9" },
@@ -234,7 +234,7 @@
       q8: {
         scene: "創造與建設",
         img: "source/創造與建設.png",
-        question: "你看到一片空地，你想做什麼？",
+        question: "看到一片空地，你會做什麼？",
         choices: [
           { text: "建造小屋或工具", next: "q11" },
           { text: "研究地形和魔法", next: "q12" },
@@ -254,9 +254,9 @@
       q10: {
         scene: "支援選擇",
         img: "source/支援選擇.png",
-        question: "隊伍遇到危險，你會？",
+        question: "隊伍遇到危險時，你會？",
         choices: [
-          { text: "治療或協助大家", result: "牧師" },
+          { text: "治療或協助隊伍", result: "牧師" },
           { text: "提供策略與魔法", result: "魔法師" },
           { text: "保護隊伍承受傷害", result: "戰士" }
         ]
@@ -264,7 +264,7 @@
       q11: {
         scene: "守護與挑戰",
         img: "source/守護與挑戰.png",
-        question: "你站在隊伍前方，敵人逼近，你會？",
+        question: "站在隊伍前方，敵人逼近，你會？",
         choices: [
           { text: "衝在最前線", result: "勇者" },
           { text: "建立防護或屏障", result: "戰士" },
@@ -274,7 +274,7 @@
       q12: {
         scene: "終極選擇",
         img: "source/終極選擇.png",
-        question: "你抵達未知城鎮，你想如何行動？",
+        question: "抵達一個未知城鎮，你想如何行動？",
         choices: [
           { text: "接受挑戰，成為英雄", result: "勇者" },
           { text: "協助居民與隊伍", result: "牧師" },

@@ -125,6 +125,22 @@
       max-width: 520px;
       margin: 0 auto 40px;
     }
+    .name-input {
+      width: 100%;
+      box-sizing: border-box;
+      background: rgba(255,255,255,.15);
+      border: none;
+      border-radius: 14px;
+      color: #fff;
+      font-size: 1.1rem;
+      font-family: inherit;
+      padding: 18px 20px;
+      text-align: center;
+      margin-bottom: 28px;
+      outline: none;
+    }
+    .name-input::placeholder { color: rgba(255,255,255,.5); }
+    .name-input:focus { background: rgba(255,255,255,.22); }
     .mute-btn {
       position: fixed;
       top: 16px;
@@ -337,7 +353,6 @@
           <div class="result-traits">人格特質：${r.traits ?? ""}</div>
           <div class="result-divider"></div>
           <div class="result-desc">${r.desc ?? ""}</div>
-          <button id="restart" style="background:#fff;color:#000;font-size:1.1rem;font-weight:600;padding:16px 60px;border-radius:50px;cursor:pointer;letter-spacing:.05em;">重新測驗</button>
         </div>
       `;
       document.getElementById("restart").addEventListener("click", () => renderStart());
@@ -361,8 +376,35 @@
       quizEl.innerHTML = `<div style="text-align:center"><button id="start-btn">開始冒險</button></div>`;
       document.getElementById("start-btn").addEventListener("click", () => {
         startBgm();
-        renderQuestion("q1");
+        renderNameInput();
       });
+    }
+
+    function renderNameInput() {
+      introEl.style.display = "none";
+      document.querySelector("h1").style.display = "none";
+      quizEl.innerHTML = `
+        <div style="text-align:center; padding: 10px 0;">
+          <div class="scene-title" style="margin-bottom:32px;">冒險者登入</div>
+          <p style="font-size:1rem; opacity:.8; line-height:1.9; margin-bottom:36px;">
+            在冒險開始前，請創建你的角色資料。<br>這將記錄你的冒險軸跡。
+          </p>
+          <input class="name-input" id="player-name" type="text" placeholder="請輸入你的本名" maxlength="20">
+          <div style="text-align:center">
+            <button id="enter-btn" style="background:#fff;color:#000;font-size:1.1rem;font-weight:600;padding:16px 60px;border-radius:50px;cursor:pointer;letter-spacing:.05em;">進入世界</button>
+          </div>
+        </div>
+      `;
+      const input = document.getElementById("player-name");
+      const enterBtn = document.getElementById("enter-btn");
+      function proceed() {
+        const name = input.value.trim();
+        if (!name) { input.focus(); return; }
+        window._playerName = name;
+        renderQuestion("q1");
+      }
+      enterBtn.addEventListener("click", proceed);
+      input.addEventListener("keydown", e => { if (e.key === "Enter") proceed(); });
     }
 
     renderStart();

@@ -101,7 +101,7 @@
   <script>
     const data = {
       q1: {
-        title: "題1 – 初始場景：你睜開眼睛，眼前的世界是？",
+        title: "初始場景：你睜開眼睛，眼前的世界是？",
         choices: [
           { text: "A. 翠綠森林", next: "q2" },
           { text: "B. 灰暗廢墟", next: "q3" },
@@ -109,7 +109,7 @@
         ]
       },
       q2: {
-        title: "題2 – 森林探險：你走在森林裡，發現一棵會發光的古樹，你會？",
+        title: "森林探險：你走在森林裡，發現一棵會發光的古樹，你會？",
         choices: [
           { text: "A. 研究樹的魔法", next: "q5" },
           { text: "B. 攀上樹探索周圍", next: "q6" },
@@ -117,7 +117,7 @@
         ]
       },
       q3: {
-        title: "題3 – 廢墟迷宮：你走進廢墟，看到寶箱被怪物守護，你會？",
+        title: "廢墟迷宮：你走進廢墟，看到寶箱被怪物守護，你會？",
         choices: [
           { text: "A. 衝上去戰鬥", next: "q6" },
           { text: "B. 嘗試解鎖陷阱", next: "q5" },
@@ -125,7 +125,7 @@
         ]
       },
       q4: {
-        title: "題4 – 虚空探索：你身處空白虛空，你想做什麼？",
+        title: "虛空探索：你身處空白虛空，你想做什麼？",
         choices: [
           { text: "A. 建造工具", next: "q8" },
           { text: "B. 冥想，觀察環境", next: "q7" },
@@ -133,7 +133,7 @@
         ]
       },
       q5: {
-        title: "題5 – 魔法的抉擇：你發現神秘水晶，你會？",
+        title: "魔法的抉擇：你發現神秘水晶，你會？",
         choices: [
           { text: "A. 研究魔法", next: "q9" },
           { text: "B. 製作小工具或武器", next: "q8" },
@@ -141,7 +141,7 @@
         ]
       },
       q6: {
-        title: "題6 – 勇氣挑戰：你面對懸崖與危險怪物，你會？",
+        title: "勇氣挑戰：你面對懸崖與危險怪物，你會？",
         choices: [
           { text: "A. 衝上去冒險", next: "q9" },
           { text: "B. 慎重探索", next: "q10" },
@@ -149,7 +149,7 @@
         ]
       },
       q7: {
-        title: "題7 – 團隊選擇：你遇到一群迷路旅人，你會？",
+        title: "團隊選擇：你遇到一群迷路旅人，你會？",
         choices: [
           { text: "A. 幫助他們安全穿越", next: "q10" },
           { text: "B. 帶領大家冒險", next: "q9" },
@@ -157,7 +157,7 @@
         ]
       },
       q8: {
-        title: "題8 – 創造與建設：你看到一片空地，你想做什麼？",
+        title: "創造與建設：你看到一片空地，你想做什麼？",
         choices: [
           { text: "A. 建造小屋或工具", next: "q11" },
           { text: "B. 研究地形和魔法", next: "q12" },
@@ -165,7 +165,7 @@
         ]
       },
       q9: {
-        title: "題9 – 冒險決策：你遇到一個需要勇氣和策略才能通過的陷阱，你會？",
+        title: "冒險決策：你遇到一個需要勇氣和策略才能通過的陷阱，你會？",
         choices: [
           { text: "A. 衝上去", result: "勇者" },
           { text: "B. 使用智慧解決", result: "魔法師" },
@@ -173,7 +173,7 @@
         ]
       },
       q10: {
-        title: "題10 – 支援選擇：隊伍遇到危險，你會？",
+        title: "支援選擇：隊伍遇到危險，你會？",
         choices: [
           { text: "A. 治療或協助大家", result: "牧師" },
           { text: "B. 提供策略與魔法", result: "魔法師" },
@@ -181,7 +181,7 @@
         ]
       },
       q11: {
-        title: "題11 – 守護與挑戰：你站在隊伍前方，敵人逼近，你會？",
+        title: "守護與挑戰：你站在隊伍前方，敵人逼近，你會？",
         choices: [
           { text: "A. 衝在最前線", result: "勇者" },
           { text: "B. 建立防護或屏障", result: "戰士" },
@@ -189,7 +189,7 @@
         ]
       },
       q12: {
-        title: "題12 – 終極選擇：你抵達未知城鎮，你想如何行動？",
+        title: "終極選擇：你抵達未知城鎮，你想如何行動？",
         choices: [
           { text: "A. 接受挑戰，成為英雄", result: "勇者" },
           { text: "B. 協助居民與隊伍", result: "牧師" },
@@ -225,7 +225,7 @@
     const introEl = document.getElementById("intro");
 
     function renderQuestion(id) {
-      introEl.style.display = "";
+      introEl.style.display = "none";
       const q = data[id];
       quizEl.innerHTML = `
         <div class="question-title">${q.title}</div>
@@ -272,10 +272,16 @@
         <p>${desc[role] ?? ""}</p>
         <button id="restart">重新測驗</button>
       `;
-      document.getElementById("restart").addEventListener("click", () => renderQuestion("q1"));
+      document.getElementById("restart").addEventListener("click", () => renderStart());
     }
 
-    renderQuestion("q1");
+    function renderStart() {
+      introEl.style.display = "";
+      quizEl.innerHTML = `<button id="start-btn">✨ 開始冒險</button>`;
+      document.getElementById("start-btn").addEventListener("click", () => renderQuestion("q1"));
+    }
+
+    renderStart();
   </script>
 </body>
 </html>

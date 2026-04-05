@@ -9,89 +9,128 @@
     body {
       margin: 0;
       font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-      background: linear-gradient(135deg, #0f2044, #1a3a5c, #2e6b8a, #c4876a);
-      background-size: 300% 300%;
-      animation: bgShift 8s ease infinite;
+      background: #000;
       color: #fff;
       min-height: 100vh;
       display: grid;
       place-items: center;
       overflow-x: hidden;
     }
-    @keyframes bgShift {
-      0%   { background-position: 0% 50%; }
-      50%  { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    /* 星點 */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px),
-        radial-gradient(circle, rgba(255,220,100,.6) 1px, transparent 1px);
-      background-size: 120px 120px, 80px 80px;
-      background-position: 0 0, 40px 40px;
-      animation: twinkle 4s ease-in-out infinite alternate;
-      opacity: .35;
-    }
-    @keyframes twinkle {
-      from { opacity: .2; }
-      to   { opacity: .5; }
-    }
     .card {
       position: relative;
       width: min(760px, 92vw);
-      background: rgba(5, 15, 35, .55);
-      border: 1px solid rgba(196, 160, 120, .35);
-      border-radius: 20px;
       padding: 28px;
-      box-shadow:
-        0 0 30px rgba(46, 107, 138, .4),
-        0 16px 40px rgba(0,0,0,.5);
-      backdrop-filter: blur(12px);
+      text-align: center;
     }
     h1 {
-      margin: 0 0 12px;
-      font-size: 1.6rem;
-      text-shadow: 0 0 12px rgba(196, 200, 255, .6);
+      margin: 0 0 40px;
+      font-size: 2.4rem;
+      font-weight: 700;
+      text-align: center;
     }
-    .subtitle { opacity: .9; line-height: 1.7; margin-bottom: 18px; }
-    .question-title { font-size: 1.2rem; margin: 10px 0 12px; }
-    .choices { display: grid; gap: 10px; }
+    .subtitle { font-size: 1.15rem; opacity: .9; line-height: 2.2; margin-bottom: 48px; text-align: center; }
+    .scene-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      text-align: center;
+      margin: 0 0 20px;
+    }
+    .question-img {
+      width: 100%;
+      height: 220px;
+      background: #d0d0d0;
+      border-radius: 12px;
+      margin-bottom: 24px;
+    }
+    .question-text {
+      font-size: 1.1rem;
+      text-align: center;
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+    .choices { display: grid; gap: 14px; }
     button {
       all: unset;
       cursor: pointer;
-      padding: 12px 14px;
-      border-radius: 10px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(196, 160, 120, .35);
-      transition: transform .08s ease, background .2s ease, box-shadow .2s ease;
+      border-radius: 14px;
+      transition: opacity .15s ease, transform .1s ease;
       line-height: 1.5;
     }
-    button:hover {
-      background: rgba(46, 107, 138, .4);
-      border-color: rgba(255, 220, 160, .6);
-      box-shadow: 0 0 12px rgba(46, 107, 138, .5);
+    .choice-btn {
+      background: #fff;
+      color: #000;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 18px 20px;
+      border-radius: 14px;
+      text-align: center;
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .choice-btn:hover {
+      opacity: .85;
       transform: translateY(-2px);
     }
-    .result {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin: 10px 0 12px;
-      color: #ffd76a;
-      text-shadow: 0 0 10px rgba(255, 215, 0, .7);
+    #start-btn {
+      background: #fff;
+      color: #000;
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 18px 80px;
+      border-radius: 50px;
+      border: none;
+      letter-spacing: .05em;
     }
-    .footer { margin-top: 16px; font-size: .92rem; opacity: .75; }
+    #start-btn:hover {
+      background: #e8e8e8;
+      transform: translateY(-2px);
+    }
+    .result-done {
+      font-size: 1rem;
+      opacity: .6;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .result-role {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #ffd76a;
+      text-shadow: 0 0 24px rgba(255, 215, 0, .6);
+      margin: 0 0 36px;
+      line-height: 1.2;
+    }
+    .result-traits {
+      font-size: 1rem;
+      opacity: .75;
+      margin-bottom: 28px;
+      letter-spacing: .05em;
+    }
+    .result-divider {
+      width: 60px;
+      height: 2px;
+      background: rgba(255,215,0,.4);
+      margin: 0 auto 28px;
+      border-radius: 2px;
+    }
+    .result-desc {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      opacity: .88;
+      max-width: 520px;
+      margin: 0 auto 40px;
+    }
   </style>
 </head>
 <body>
   <main class="card">
-    <h1>婚禮奇幻職業心理測驗</h1>
+    <h1>RPG冒險：你的人格職業是什麼？</h1>
     <p class="subtitle" id="intro">
-      你剛從平行世界轉生到一個奇幻世界的儲存點，一切未知而神秘。你的選擇將決定你在這場冒險中的角色類型。準備好踏上冒險了嗎？
+      歡迎轉生到奇幻世界！這裡的一切未知而神秘。<br>
+      今天，你將經歷一場冒險，探索自己內在的潛力。<br>
+      每個選擇都將決定你在這場冒險中的職業角色。<br>
+      準備好踏上冒險了嗎？
     </p>
 
     <section id="quiz"></section>
@@ -101,124 +140,132 @@
   <script>
     const data = {
       q1: {
-        title: "初始場景：你睜開眼睛，眼前的世界是？",
+        scene: "冒險起點",
+        question: "你剛從平行世界轉生，睜開眼睛，眼前的世界是？",
         choices: [
-          { text: "A. 翠綠森林", next: "q2" },
-          { text: "B. 灰暗廢墟", next: "q3" },
-          { text: "C. 空白虛無", next: "q4" }
+          { text: "翠綠森林，鳥語花香", next: "q2" },
+          { text: "灰暗廢墟，陰風颼颼", next: "q3" },
+          { text: "空白虛無，什麼都沒有", next: "q4" }
         ]
       },
       q2: {
-        title: "森林探險：你走在森林裡，發現一棵會發光的古樹，你會？",
+        scene: "森林探險",
+        question: "你走在森林裡，發現一棵會發光的古樹，你會？",
         choices: [
-          { text: "A. 研究樹的魔法", next: "q5" },
-          { text: "B. 攀上樹探索周圍", next: "q6" },
-          { text: "C. 守護樹，防止受傷", next: "q7" }
+          { text: "研究樹的魔法", next: "q5" },
+          { text: "攀上樹探索周圍", next: "q6" },
+          { text: "守護樹，防止受傷", next: "q7" }
         ]
       },
       q3: {
-        title: "廢墟迷宮：你走進廢墟，看到寶箱被怪物守護，你會？",
+        scene: "廢墟迷宮",
+        question: "你走進廢墟，看到寶箱被怪物守護，你會？",
         choices: [
-          { text: "A. 衝上去戰鬥", next: "q6" },
-          { text: "B. 嘗試解鎖陷阱", next: "q5" },
-          { text: "C. 設置防禦，先確保安全", next: "q7" }
+          { text: "衝上去戰鬥", next: "q6" },
+          { text: "嘗試解鎖陷阱", next: "q5" },
+          { text: "設置防禦，先確保安全", next: "q7" }
         ]
       },
       q4: {
-        title: "虛空探索：你身處空白虛空，你想做什麼？",
+        scene: "虛空探索",
+        question: "你身處空白虛空，你想做什麼？",
         choices: [
-          { text: "A. 建造工具", next: "q8" },
-          { text: "B. 冥想，觀察環境", next: "q7" },
-          { text: "C. 探索未知，找出路", next: "q6" }
+          { text: "建造工具", next: "q8" },
+          { text: "冥想，觀察環境", next: "q7" },
+          { text: "探索未知，找出路", next: "q6" }
         ]
       },
       q5: {
-        title: "魔法的抉擇：你發現神秘水晶，你會？",
+        scene: "魔法的抉擇",
+        question: "你發現神秘水晶，你會？",
         choices: [
-          { text: "A. 研究魔法", next: "q9" },
-          { text: "B. 製作小工具或武器", next: "q8" },
-          { text: "C. 召喚守護靈", next: "q10" }
+          { text: "研究魔法", next: "q9" },
+          { text: "製作小工具或武器", next: "q8" },
+          { text: "召喚守護靈", next: "q10" }
         ]
       },
       q6: {
-        title: "勇氣挑戰：你面對懸崖與危險怪物，你會？",
+        scene: "勇氣挑戰",
+        question: "你面對懸崖與危險怪物，你會？",
         choices: [
-          { text: "A. 衝上去冒險", next: "q9" },
-          { text: "B. 慎重探索", next: "q10" },
-          { text: "C. 搭建橋或防禦", next: "q11" }
+          { text: "衝上去冒險", next: "q9" },
+          { text: "慎重探索", next: "q10" },
+          { text: "搭建橋或防禦", next: "q11" }
         ]
       },
       q7: {
-        title: "團隊選擇：你遇到一群迷路旅人，你會？",
+        scene: "團隊選擇",
+        question: "你遇到一群迷路旅人，你會？",
         choices: [
-          { text: "A. 幫助他們安全穿越", next: "q10" },
-          { text: "B. 帶領大家冒險", next: "q9" },
-          { text: "C. 建造工具或防護", next: "q11" }
+          { text: "幫助他們安全穿越", next: "q10" },
+          { text: "帶領大家冒險", next: "q9" },
+          { text: "建造工具或防護", next: "q11" }
         ]
       },
       q8: {
-        title: "創造與建設：你看到一片空地，你想做什麼？",
+        scene: "創造與建設",
+        question: "你看到一片空地，你想做什麼？",
         choices: [
-          { text: "A. 建造小屋或工具", next: "q11" },
-          { text: "B. 研究地形和魔法", next: "q12" },
-          { text: "C. 探索未知", next: "q9" }
+          { text: "建造小屋或工具", next: "q11" },
+          { text: "研究地形和魔法", next: "q12" },
+          { text: "探索未知", next: "q9" }
         ]
       },
       q9: {
-        title: "冒險決策：你遇到一個需要勇氣和策略才能通過的陷阱，你會？",
+        scene: "冒險決策",
+        question: "你遇到一個需要勇氣和策略才能通過的陷阱，你會？",
         choices: [
-          { text: "A. 衝上去", result: "勇者" },
-          { text: "B. 使用智慧解決", result: "魔法師" },
-          { text: "C. 幫助團隊安全通過", result: "戰士" }
+          { text: "直接衝上去", result: "勇者" },
+          { text: "使用智慧解決", result: "魔法師" },
+          { text: "幫助團隊安全通過", result: "戰士" }
         ]
       },
       q10: {
-        title: "支援選擇：隊伍遇到危險，你會？",
+        scene: "支援選擇",
+        question: "隊伍遇到危險，你會？",
         choices: [
-          { text: "A. 治療或協助大家", result: "牧師" },
-          { text: "B. 提供策略與魔法", result: "魔法師" },
-          { text: "C. 保護隊伍承受傷害", result: "戰士" }
+          { text: "治療或協助大家", result: "牧師" },
+          { text: "提供策略與魔法", result: "魔法師" },
+          { text: "保護隊伍承受傷害", result: "戰士" }
         ]
       },
       q11: {
-        title: "守護與挑戰：你站在隊伍前方，敵人逼近，你會？",
+        scene: "守護與挑戰",
+        question: "你站在隊伍前方，敵人逼近，你會？",
         choices: [
-          { text: "A. 衝在最前線", result: "勇者" },
-          { text: "B. 建立防護或屏障", result: "戰士" },
-          { text: "C. 鼓舞或協助隊伍", result: "牧師" }
+          { text: "衝在最前線", result: "勇者" },
+          { text: "建立防護或屏障", result: "戰士" },
+          { text: "鼓舞或協助隊伍", result: "牧師" }
         ]
       },
       q12: {
-        title: "終極選擇：你抵達未知城鎮，你想如何行動？",
+        scene: "終極選擇",
+        question: "你抵達未知城鎮，你想如何行動？",
         choices: [
-          { text: "A. 接受挑戰，成為英雄", result: "勇者" },
-          { text: "B. 協助居民與隊伍", result: "牧師" },
-          { text: "C. 研究城鎮秘密", result: "魔法師" }
+          { text: "接受挑戰，成為英雄", result: "勇者" },
+          { text: "協助居民與隊伍", result: "牧師" },
+          { text: "研究城鎮秘密", result: "魔法師" }
         ]
       }
     };
 
-    const desc = {
-      "勇者": `
-        <strong>人格特質：</strong>行動力強、勇於冒險、敢於挑戰<br><br>
-        <strong>RPG 風格解說：</strong><br>
-        你是團隊的開路先鋒！凡事不怕困難，喜歡衝在最前面解決問題。面對挑戰時，你總能第一時間做決定，帶領隊友踏上未知冒險。就算跌倒，也會笑著爬起來，繼續向前！
-      `,
-      "魔法師": `
-        <strong>人格特質：</strong>智慧型、策略型、好奇心強<br><br>
-        <strong>RPG 風格解說：</strong><br>
-        你是團隊的智囊，喜歡分析與解謎。無論多麼複雜的挑戰，你總能找到最巧妙的方法解決。你的好奇心與學習力讓你在冒險中總能發現秘密寶藏或隱藏技能，成為不可或缺的智慧支援。
-      `,
-      "戰士": `
-        <strong>人格特質：</strong>穩定、可靠、耐心、守護型<br><br>
-        <strong>RPG 風格解說：</strong><br>
-        你是團隊的防線與靠山，遇到危險總能穩住陣腳。無論風險多大，你總能冷靜應對，承擔重任，保護隊友安全。你的耐心與堅持讓隊伍能順利度過任何困境，是最值得信賴的伙伴。
-      `,
-      "牧師": `
-        <strong>人格特質：</strong>體貼、協助他人、團隊導向<br><br>
-        <strong>RPG 風格解說：</strong><br>
-        你是團隊的心靈支柱，總能注意到隊友的需要，適時給予幫助與鼓勵。你溫暖、善解人意，能讓周圍的人感到安心。在冒險中，你不求最光彩的榮耀，只希望每個人都平安順利地完成任務。
-      `
+    const roleData = {
+      "勇者": {
+        traits: "行動力強、勇於冒險、敢於挑戰",
+        desc: "你是團隊的開路先鋒！凡事不怕困難，喜歡衝在最前面解決問題。面對挑戰時，你總能第一時間做決定，帶領隊友踏上未知冒險。就算跌倒，也會笑著爬起來，繼續向前！"
+      },
+      "魔法師": {
+        traits: "智慧型、策略型、好奇心強",
+        desc: "你是團隊的智囊，喜歡分析與解謎。無論多麼複雜的挑戰，你總能找到最巧妙的方法解決。你的好奇心與學習力讓你在冒險中總能發現秘密寶藏或隱藏技能，成為不可或缺的智慧支援。"
+      },
+      "戰士": {
+        traits: "穩定、可靠、耐心、守護型",
+        desc: "你是團隊的防線與靠山，遇到危險總能穩住陣腳。無論風險多大，你總能冷靜應對，承擔重任，保護隊友安全。你的耐心與堅持讓隊伍能順利度過任何困境，是最值得信賴的伙伴。"
+      },
+      "牧師": {
+        traits: "體貼、協助他人、團隊導向",
+        desc: "你是團隊的心靈支柱，總能注意到隊友的需要，適時給予幫助與鼓勵。你溫暖、善解人意，能讓周圍的人感到安心。在冒險中，你不求最光彩的榮耀，只希望每個人都平安順利地完成任務。"
+      }
     };
 
     const quizEl = document.getElementById("quiz");
@@ -226,14 +273,17 @@
 
     function renderQuestion(id) {
       introEl.style.display = "none";
+      document.querySelector("h1").style.display = "none";
       const q = data[id];
       quizEl.innerHTML = `
-        <div class="question-title">${q.title}</div>
+        <div class="scene-title">${q.scene}</div>
+        <div class="question-img"></div>
+        <div class="question-text">${q.question}</div>
         <div class="choices">
-          ${q.choices.map((c, i) => `<button data-index="${i}">${c.text}</button>`).join("")}
+          ${q.choices.map((c, i) => `<button class="choice-btn" data-index="${i}">${c.text}</button>`).join("")}
         </div>
       `;
-      quizEl.querySelectorAll("button").forEach(btn => {
+      quizEl.querySelectorAll(".choice-btn").forEach(btn => {
         btn.addEventListener("click", () => {
           const choice = q.choices[Number(btn.dataset.index)];
           if (choice.result) renderResult(choice.result);
@@ -244,40 +294,25 @@
 
     function renderResult(role) {
       document.getElementById("intro").style.display = "none";
-      const desc = {
-        "勇者": `
-          <strong>人格特質：</strong>行動力強、勇於冒險、敢於挑戰<br><br>
-          <strong>RPG 風格解說：</strong><br>
-          你是團隊的開路先鋒！凡事不怕困難，喜歡衝在最前面解決問題。面對挑戰時，你總能第一時間做決定，帶領隊友踏上未知冒險。就算跌倒，也會笑著爬起來，繼續向前！
-        `,
-        "魔法師": `
-          <strong>人格特質：</strong>智慧型、策略型、好奇心強<br><br>
-          <strong>RPG 風格解說：</strong><br>
-          你是團隊的智囊，喜歡分析與解謎。無論多麼複雜的挑戰，你總能找到最巧妙的方法解決。你的好奇心與學習力讓你在冒險中總能發現秘密寶藏或隱藏技能，成為不可或缺的智慧支援。
-        `,
-        "戰士": `
-          <strong>人格特質：</strong>穩定、可靠、耐心、守護型<br><br>
-          <strong>RPG 風格解說：</strong><br>
-          你是團隊的防線與靠山，遇到危險總能穩住陣腳。無論風險多大，你總能冷靜應對，承擔重任，保護隊友安全。你的耐心與堅持讓隊伍能順利度過任何困境，是最值得信賴的伙伴。
-        `,
-        "牧師": `
-          <strong>人格特質：</strong>體貼、協助他人、團隊導向<br><br>
-          <strong>RPG 風格解說：</strong><br>
-          你是團隊的心靈支柱，總能注意到隊友的需要，適時給予幫助與鼓勵。你溫暖、善解人意，能讓周圍的人感到安心。在冒險中，你不求最光彩的榮耀，只希望每個人都平安順利地完成任務。
-        `
-      };
+      document.querySelector("h1").style.display = "none";
+      const r = roleData[role] ?? {};
       quizEl.innerHTML = `
-        <div class="question-title">測驗完成！</div>
-        <div class="result">你的職業類型：${role}</div>
-        <p>${desc[role] ?? ""}</p>
-        <button id="restart">重新測驗</button>
+        <div style="text-align:center; padding: 20px 0;">
+          <div class="result-done">— 測驗完成 —</div>
+          <div class="result-role">你的職業類型是<br>${role}</div>
+          <div class="result-traits">人格特質：${r.traits ?? ""}</div>
+          <div class="result-divider"></div>
+          <div class="result-desc">${r.desc ?? ""}</div>
+          <button id="restart" style="background:#fff;color:#000;font-size:1.1rem;font-weight:600;padding:16px 60px;border-radius:50px;cursor:pointer;letter-spacing:.05em;">重新測驗</button>
+        </div>
       `;
       document.getElementById("restart").addEventListener("click", () => renderStart());
     }
 
     function renderStart() {
       introEl.style.display = "";
-      quizEl.innerHTML = `<button id="start-btn">✨ 開始冒險</button>`;
+      document.querySelector("h1").style.display = "";
+      quizEl.innerHTML = `<div style="text-align:center"><button id="start-btn">開始冒險</button></div>`;
       document.getElementById("start-btn").addEventListener("click", () => renderQuestion("q1"));
     }
 
